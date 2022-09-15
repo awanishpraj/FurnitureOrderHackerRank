@@ -36,7 +36,7 @@ public class FurnitureOrder implements FurnitureOrderInterface {
         // TODO: Complete the method
         if(!furnitures.isEmpty()) {
             return furnitures.entrySet().stream()
-                    .map(f -> f.getKey().cost() * f.getValue())
+                    .map(f -> (-f.getKey().cost()) * (-f.getValue()))
                     .collect(Collectors.toList())
                     .stream()
                     .reduce(Float::sum)
@@ -57,7 +57,7 @@ public class FurnitureOrder implements FurnitureOrderInterface {
     public float getTypeCost(Furniture type) {
         // TODO: Complete the method
         if(furnitures.containsKey(type)) {
-            return furnitures.get(type) * type.cost();
+            return furnitures.get(type) * type.cost() * -1.0f;
         }
         return 0.0f;
     }
